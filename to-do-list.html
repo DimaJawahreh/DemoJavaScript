@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To-do List</title>
+        <link href="style.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript">
+
+function build(){
+ 
+//debugger;
+    var task=document.createElement("div");
+    task.setAttribute("class","TasksBox");
+    var check=document.createElement("input");
+    check.setAttribute("type","checkbox");
+    check.setAttribute("onclick","change(this)");
+    task.appendChild(check);
+
+    var spann=document.createElement("span");
+    var text1=document.getElementById("txtNewTask").value;
+    var txtnode=document.createTextNode(text1);
+    spann.appendChild(txtnode);
+
+    task.appendChild(spann);
+   var Taskss=document.getElementById("Tasks");
+   Taskss.appendChild(task);
+    
+   
+    }
+
+    function change(x){
+        //span true(with out line)''
+        debugger;
+        var span_parent=x.parentNode;
+   if( span_parent.getElementsByTagName("span")[0].style.textDecoration=="none" ||  span_parent.getElementsByTagName("span")[0].style.textDecoration==""){
+       var span= span_parent.getElementsByTagName("span")[0].style.textDecoration="line-through";}
+      
+   else{
+     var span= span_parent.getElementsByTagName("span")[0].style.textDecoration="none"; 
+   }
+    }
+
+    function Completed(){
+        debugger;
+        All();
+        var task_div=document.getElementById("Tasks");
+var chk=task_div.getElementsByTagName("input");
+for(var i=0;i<chk.length;i++){
+if(chk[i].checked==false){
+    chk[i].parentNode.style.display="none";
+}
+}
+    }
+
+function Active(){
+    debugger;
+    All();
+    var task_div=document.getElementById("Tasks");
+var chk=task_div.getElementsByTagName("input");
+for(var i=0;i<chk.length;i++){
+if(chk[i].checked==true){
+    chk[i].parentNode.style.display="none";
+}
+}
+}
+
+function All(){
+    debugger;
+    var all=document.getElementsByClassName("TasksBox");
+    for(var i=0;i<all.length;i++){
+        all[i].style.display="block";
+    }
+}
+
+
+
+</script>
+       
+    </head>
+    <body>
+
+        <div class="container">
+
+            <div class="NewTaskBox">
+                <input type="text" id="txtNewTask"  placeholder="New Task..." />
+            </div>
+            <div class="ActionBox" >
+                <button id="txtNewTask" class="btn ButtonSubmit" onclick="build()" >New Task</button>
+            </div>
+            <div class="TabBox">
+                <span class="tabItems" onclick="All()">
+                    All
+                </span>
+                <span class="tabItems" onclick="Active()" >
+                    Active
+                </span>
+                <span class="tabItems" onclick="Completed()">
+                    Completed
+                </span>
+            </div>
+            <div id="Tasks">
+            
+        </div>
+      
+</div>
+    </body>
+</html>
